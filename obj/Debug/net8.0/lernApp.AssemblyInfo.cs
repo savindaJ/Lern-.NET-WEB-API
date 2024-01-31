@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("lernApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+692dea78c68835837d0f45d156555017ce81e210")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+33e1c7b2783279ab7ec143638b27b610cc101f5f")]
 [assembly: System.Reflection.AssemblyProductAttribute("lernApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("lernApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

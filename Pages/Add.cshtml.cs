@@ -23,5 +23,14 @@ public class AddModal : PageModel
     {
         RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
     }
+
+    public IActionResult OnPost()
+    {
+        return RedirectToPage("/Index");
+    }
+
+    public void OnPut(){
+        
+    }
 }
 

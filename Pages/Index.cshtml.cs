@@ -11,6 +11,10 @@ public class IndexModel : PageModel
     {
         _logger = logger;
     }
+    public void OnPost()
+    {
+        Console.WriteLine("Post");
+    }
 
     public void OnGet()
     {
@@ -23,6 +27,8 @@ public class IndexModel : PageModel
 
         Console.WriteLine(user.Name);
     }
+
+    
 }
 
 public class User{
