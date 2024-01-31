@@ -14,6 +14,18 @@ public class IndexModel : PageModel
 
     public void OnGet()
     {
+        User user = new User();
 
+        user.Name = "Max Mustermann";
+        user.Email = "sample@gmail";
+        user.Password = "123456";
+
+        Console.WriteLine(user);
     }
+}
+
+public class User{
+    public string Name;
+    public string Email;
+    public string Password;
 }

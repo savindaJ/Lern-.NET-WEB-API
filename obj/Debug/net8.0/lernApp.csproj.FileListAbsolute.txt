@@ -28,3 +28,4 @@ G:\dotNet C#\lernApp\obj\Debug\net8.0\refint\lernApp.dll
 G:\dotNet C#\lernApp\obj\Debug\net8.0\lernApp.pdb
 G:\dotNet C#\lernApp\obj\Debug\net8.0\lernApp.genruntimeconfig.cache
 G:\dotNet C#\lernApp\obj\Debug\net8.0\ref\lernApp.dll
+G:\dotNet C#\lernApp\obj\Debug\net8.0\lernApp.sourcelink.json
