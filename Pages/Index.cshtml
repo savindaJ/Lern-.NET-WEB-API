@@ -59,7 +59,7 @@
                                     <td>@item.cusAddress</td>
                                     <td>@item.cusSalary</td>
                                     <td>
-                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal2" style="height: 30px">
                                             Update
                                         </button>
@@ -131,25 +131,25 @@
                         </div>
                         <div class="modal-body">
                             <div class="container">
-                                <form>
+                                <form method="">
                                     <div class="mb-3">
                                         <label class="form-label" >ID</label>
-                                        <input id="upCID" type="email" class="form-control" placeholder="">
+                                        <input id="upCID" type="text" name="up-id" class="form-control" placeholder="">
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="form-label" >Customer Name</label>
-                                        <input id="upCName" type="email" class="form-control" placeholder="">
+                                        <input id="upCName" name="up-name" type="text" class="form-control" placeholder="">
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="form-label" >Customer address</label>
-                                        <input id="upCAddress" type="email" class="form-control" placeholder="">
+                                        <input id="upCAddress" name="up-address" type="text" class="form-control" placeholder="">
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="form-label" >Customer TP</label>
-                                        <input id="upCTp" type="email" class="form-control" placeholder="">
+                                        <input id="upCTp" type="text" name="up-salary" class="form-control" placeholder="">
                                     </div>
 
                                     <button id="btnUpdate" type="button" class="btn btn-primary" data-bs-dismiss="modal">Update Customer</button>

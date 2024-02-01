@@ -6,41 +6,55 @@ namespace lernApp.Pages.Customer;
 public class IndexModel : PageModel
 {
 
-    public List<Customer> customers = new List<Customer>(); 
+    public List<Customer> customers = new List<Customer>();
 
     public void OnPut()
     {
-    #pragma warning disable CS8601 // Possible null reference assignment.
+#pragma warning disable CS8601 // Possible null reference assignment.
         Customer c1 = new Customer
-                {
-                    cusId = Request.Form["cus-id"],
-                    cusName = Request.Form["cus-name"],
-                    cusAddress = Request.Form["cus-address"],
-                    cusSalary = Convert.ToDouble(Request.Form["cus-salary"])
-                };
+        {
+            cusId = Request.Form["cus-id"],
+            cusName = Request.Form["cus-name"],
+            cusAddress = Request.Form["cus-address"],
+            cusSalary = Convert.ToDouble(Request.Form["cus-salary"])
+        };
     }
 
     public void OnDelete()
     {
-        
+
     }
 
     public void OnPost()
     {
-    #pragma warning disable CS8601 // Possible null reference assignment.
+#pragma warning disable CS8601 // Possible null reference assignment.
         Customer c1 = new Customer
-                {
-                    cusId = Request.Form["cus-id"],
-                    cusName = Request.Form["cus-name"],
-                    cusAddress = Request.Form["cus-address"],
-                    cusSalary = Convert.ToDouble(Request.Form["cus-salary"])
-                };
-    #pragma warning restore CS8601 // Possible null reference assignment.
-        Console.WriteLine(c1.cusId);
-        Console.WriteLine(c1.cusName);
-        Console.WriteLine(c1.cusAddress);
-        Console.WriteLine(c1.cusSalary);
-        
+        {
+            cusId = Request.Form["cus-id"],
+            cusName = Request.Form["cus-name"],
+            cusAddress = Request.Form["cus-address"],
+            cusSalary = Convert.ToDouble(Request.Form["cus-salary"])
+        };
+
+#pragma warning restore CS8601 // Possible null reference assignment.
+
+        try
+        {
+            string connStr = "server=127.0.0.1;user=root;database=web_test;password=80221474;";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            conn.Open();
+
+            string sql = "INSERT INTO customer VALUES('" + c1.cusId + "','" + c1.cusName + "','" + c1.cusAddress + "'," + c1.cusSalary + ")";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            cmd.ExecuteNonQuery();
+            Response.Redirect("/index");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.ToString());
+        }
+
+
         OnGet();
     }
 
