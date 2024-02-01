@@ -8,6 +8,23 @@ public class IndexModel : PageModel
 
     public List<Customer> customers = new List<Customer>(); 
 
+    public void OnPut()
+    {
+    #pragma warning disable CS8601 // Possible null reference assignment.
+        Customer c1 = new Customer
+                {
+                    cusId = Request.Form["cus-id"],
+                    cusName = Request.Form["cus-name"],
+                    cusAddress = Request.Form["cus-address"],
+                    cusSalary = Convert.ToDouble(Request.Form["cus-salary"])
+                };
+    }
+
+    public void OnDelete()
+    {
+        
+    }
+
     public void OnPost()
     {
     #pragma warning disable CS8601 // Possible null reference assignment.
