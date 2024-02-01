@@ -1,38 +1,65 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-
-namespace lernApp.Pages;
+using MySql.Data.MySqlClient; // Add this using directive dotnet add package MySql.Data
+namespace lernApp.Pages.Customer;
 
 public class IndexModel : PageModel
 {
-    private readonly ILogger<IndexModel> _logger;
 
-    public IndexModel(ILogger<IndexModel> logger)
-    {
-        _logger = logger;
-    }
+    public List<Customer> customers = new List<Customer>(); 
+
     public void OnPost()
     {
-        Console.WriteLine("Post");
+    #pragma warning disable CS8601 // Possible null reference assignment.
+        Customer c1 = new Customer
+                {
+                    cusId = Request.Form["cus-id"],
+                    cusName = Request.Form["cus-name"],
+                    cusAddress = Request.Form["cus-address"],
+                    cusSalary = Convert.ToDouble(Request.Form["cus-salary"])
+                };
+    #pragma warning restore CS8601 // Possible null reference assignment.
+        Console.WriteLine(c1.cusId);
+        Console.WriteLine(c1.cusName);
+        Console.WriteLine(c1.cusAddress);
+        Console.WriteLine(c1.cusSalary);
+        
+        OnGet();
     }
 
     public void OnGet()
     {
-        User user = new()
-        {
-            Name = "Max Mustermann",
-            Email = "sample@gmail",
-            Password = "123456"
-        };
+        string connStr = "server=127.0.0.1;user=root;database=web_test;password=80221474;";
+        MySqlConnection conn = new MySqlConnection(connStr);
+        conn.Open();
 
-        Console.WriteLine(user.Name);
+        string sql = "SELECT * FROM customer";
+        MySqlCommand cmd = new MySqlCommand(sql, conn);
+        using (MySqlDataReader rdr = cmd.ExecuteReader())
+        {
+            while (rdr.Read())
+            {
+                Customer c1 = new Customer
+                {
+                    cusId = rdr.GetString(0),
+                    cusName = rdr.GetString(1),
+                    cusAddress = rdr.GetString(2),
+                    cusSalary = rdr.GetDouble(3)
+                };
+
+                customers.Add(c1);
+            }
+        }
+        conn.Close();
+    }
+    public class Customer
+    {
+        public required string cusId;
+        public required string cusName;
+        public required string cusAddress;
+        public required double cusSalary;
     }
 
-    
+
 }
 
-public class User{
-    public required string Name;
-    public required string Email;
-    public required string Password;
-}

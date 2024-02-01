@@ -1,5 +1,5 @@
 ﻿@page
-@model IndexModel
+@model lernApp.Pages.Customer.IndexModel
 @{
     ViewData["Title"] = "Lern .NET";
 }
@@ -35,24 +35,6 @@
 
                         </div>
                     </div>
-
-                    <form class="row w-50" role="" method="">
-
-                        <div class="col-12 col-md-6 ">
-                            <input class="form-control me-2 mb-2 mb-lg-0 shadow-sm" type=""
-                                   placeholder="Enter Name/TP/Address"
-                                   aria-label="Search" id="txtSearch" style="height: 30px">
-                        </div>
-                        <div class="col-12 col-md-3 ">
-                            <select class="btn btn-warning dropdown-toggle me-2 mb-2 mb-lg-0" type="button"
-                                    id="cusSearch"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                <option><a class="dropdown-item" href="#">Customer Id</a></option>
-                                <option><a class="dropdown-item" href="#">Name</a></option>
-                            </select>
-                        </div>
-                    </form>
-
                 </div>
 
                 <div class="row d-flex overflow-auto h-75 col-lg-10 col-12 m-auto">
@@ -68,6 +50,26 @@
                         </thead>
 
                         <tbody id="body">
+
+                            @foreach(var item in Model.customers)
+                            {
+                                <tr class="bg-white">
+                                    <td>@item.cusId</td>
+                                    <td>@item.cusName</td>
+                                    <td>@item.cusAddress</td>
+                                    <td>@item.cusSalary</td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal2" style="height: 30px">
+                                            Update
+                                        </button>
+                                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal2" style="height: 30px">
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
 
                         </tbody>
                     </table>
@@ -85,34 +87,34 @@
                         </div>
                         <div class="modal-body">
                             <div class="container">
-                                <form>
+                                <form method="POST">
                                     <div class="mb-3">
                                         <label class="form-label">ID</label>
-                                        <input id="customer-id" type="text" class="form-control" placeholder="">
+                                        <input id="customer-id" type="text" name="cus-id" class="form-control" placeholder="">
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="form-label">Customer Name</label>
-                                        <input id="customer-name" type="text" class="form-control" placeholder="">
+                                        <input id="customer-name" type="text" name="cus-name" class="form-control" placeholder="">
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="form-label">Customer address</label>
-                                        <input id="customer-address" type="text" class="form-control" placeholder="">
+                                        <input id="customer-address" type="text" name="cus-address" class="form-control" placeholder="">
                                     </div>
 
                                     <div class="mb-3">
                                         <label class="form-label">Customer TP</label>
-                                        <input id="customer-salary" type="text" class="form-control" placeholder="">
+                                        <input id="customer-salary" type="text" name="cus-salary" class="form-control" placeholder="">
                                     </div>
 
-                                    <button id="btnSaveCustomer" type="button"  class="btn btn-primary">Add Customer
+                                    <button id="btnSaveCustomer" type="submit" class="btn btn-primary">Add Customer
                                     </button>
                                 </form>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-secondary" href="/" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
